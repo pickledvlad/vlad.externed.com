@@ -28,3 +28,130 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+
+.glowing {
+  position: relative;
+  min-width: 700px;
+  height: 550px;
+  margin: -150px;
+  transform-origin: right;
+  animation: colorChange 5s linear infinite;
+}
+
+.glowing:nth-child(even) {
+  transform-origin: left;
+}
+
+@keyframes colorChange {
+  0% {
+    filter: hue-rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.glowing span {
+  position: absolute;
+}
+
+.glowing span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -13px;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.glowing span:nth-child(3n + 1)::before {
+  --glowing-one: rgba(134,240,0,1);
+  background: var(--glowing-one);
+  box-shadow: 0 0 20px var(--glowing-one),
+    0 0 40px var(--glowing-one),
+    0 0 60px var(--glowing-one),
+    0 0 80px var(--glowing-one),
+    0 0 0 8px rgba(134,240,0,.1);
+}
+
+.glowing span:nth-child(3n + 2)::before {
+  --glowing-two: rgba(255,184,0,1);
+  background: var(--glowing-two);
+  box-shadow: 0 0 20px var(--glowing-two),
+    0 0 40px var(--glowing-two),
+    0 0 60px var(--glowing-two),
+    0 0 80px var(--glowing-two),
+    0 0 0 8px rgba(255,184,0,.1);
+}
+
+.glowing span:nth-child(3n + 3)::before {
+  --glowing-three: rgba(0,87,255,1);
+  background: var(--glowing-three);
+  box-shadow: 0 0 20px var(--glowing-three),
+    0 0 40px var(--glowing-three),
+    0 0 60px var(--glowing-three),
+    0 0 80px var(--glowing-three),
+    0 0 0 8px rgba(0,87,255,.2);
+}
+
+.glowing span:nth-child(3n + 1) {
+  animation: animate 1000s alternate infinite;
+  top: calc(80px * 1);
+  left: calc(80px * 1);
+  bottom: calc(80px * 1);
+  right: calc(80px * 1);
+}
+
+.glowing span:nth-child(3n + 2) {
+  animation: animate-reverse 500s alternate infinite;
+  top: calc(80px * 2);
+  left: calc(80px * 2);
+  bottom: calc(80px * 2);
+  right: calc(80px * 2);
+}
+
+.glowing span:nth-child(3n + 3) {
+  animation: animate 200s alternate infinite; 
+  top: calc(80px * 3);
+  left: calc(80px * 3);
+  bottom: calc(80px *3);
+  right: calc(80px * 3);
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-reverse {
+  0% {
+    transform: rotate(360deg);
+  }
+  
+  50% {
+    transform: rotate(180deg);
+  }
+  
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.glowing-cont {
+  height: 70vh;
+  width: 100vw;
+  display: block;
+  position: fixed;
+}
